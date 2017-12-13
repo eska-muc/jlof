@@ -19,7 +19,7 @@ import java.util.stream.IntStream;
 public class LOF {
  
 	public static enum Distance{
-		ABS_RELATIVE, EUCLIDIAN;
+		ABS_RELATIVE, EUCLIDIAN, 	MANHATTAN;
 	}
 	
 	/** The training instances  */
@@ -215,6 +215,10 @@ public class LOF {
 					distance += Math.pow(first[i] - second[i], 2);
 				}
 				distance = Math.sqrt(distance);
+			case MANHATTAN:
+				for (int i = 0; i < this.numAttributes; i++) {  
+					distance += Math.abs(first[i] - second[i]);
+				}				
 
 			default:
 				break;
